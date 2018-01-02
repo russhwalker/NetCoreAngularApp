@@ -21,16 +21,21 @@ namespace NetCoreAngularApp.Web.Controllers
                 {
                     CustomerId = i,
                     FirstName = $"John{i}",
-                    LastName = "Smith"
+                    LastName = "Doe"
                 };
             }
         }
 
 
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public Models.Customer Get(int id)
         {
-            return "value";
+            return new Models.Customer
+            {
+                CustomerId = id,
+                FirstName = $"John{id}",
+                LastName = "Doe"
+            };
         }
 
         [HttpPost]

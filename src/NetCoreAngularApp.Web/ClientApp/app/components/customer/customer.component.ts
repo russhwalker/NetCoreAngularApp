@@ -2,16 +2,16 @@ import { Component, Inject } from '@angular/core';
 import { Http } from '@angular/http';
 
 @Component({
-    selector: 'customers',
-    templateUrl: './customers.component.html'
+    selector: 'customer',
+    templateUrl: './customer.component.html'
 })
 
-export class CustomersComponent {
-    public customers: Customer[];
+export class CustomerComponent {
+    public customer: Customer;
 
     constructor(http: Http, @Inject('BASE_URL') baseUrl: string) {
         http.get(baseUrl + 'api/Customer/').subscribe(result => {
-            this.customers = result.json() as Customer[];
+            this.customer = result.json() as Customer;
         }, error => console.error(error));
     }
 }
