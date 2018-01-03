@@ -13,7 +13,7 @@
     <tbody>
         <tr *ngFor="let customer of customers">
             <td>{{ customer.customerId }}</td>
-            <td><a [routerLink]="['/customer']" [queryParams]="{id: customer.customerId }">{{ customer.firstName }}</a></td>
+            <td><a [routerLink]="['/customer', customer.customerId]">{{ customer.firstName }}</a></td>
             <td>{{ customer.lastName }}</td>
         </tr>
     </tbody>

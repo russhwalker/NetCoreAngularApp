@@ -10,7 +10,8 @@ export class CustomerComponent {
     public customer: Customer;
 
     constructor(http: Http, @Inject('BASE_URL') baseUrl: string) {
-        http.get(baseUrl + 'api/Customer/').subscribe(result => {
+        var customerId = 9;
+        http.get(baseUrl + 'api/customer/' + customerId).subscribe(result => {
             this.customer = result.json() as Customer;
         }, error => console.error(error));
     }
