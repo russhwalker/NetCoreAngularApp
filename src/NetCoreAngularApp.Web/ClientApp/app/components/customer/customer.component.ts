@@ -12,7 +12,6 @@ export class CustomerComponent {
 
     constructor(http: Http, @Inject('BASE_URL') baseUrl: string, private route: ActivatedRoute) {
         var id = this.route.snapshot.paramMap.get('id');
-        //var customerId = 9;
         http.get(baseUrl + 'api/customer/' + id).subscribe(result => {
             this.customer = result.json() as Customer;
         }, error => console.error(error));

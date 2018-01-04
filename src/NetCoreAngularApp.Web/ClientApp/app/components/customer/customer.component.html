@@ -1,7 +1,14 @@
 <h1>Customers</h1>
 
-CustomerId: {{ customer.customerId }}
+<div>
+    <label>CustomerId:</label>
+    <input [(ngModel)]="customer.customerId" />
+</div>
 <div>
     <label>First Name:</label>
     <input [(ngModel)]="customer.firstName" placeholder="First Name" />
+</div>
+<div>
+    <label>Last Name:</label>
+    <input [(ngModel)]="customer.lastName" placeholder="Last Name" />
 </div>
