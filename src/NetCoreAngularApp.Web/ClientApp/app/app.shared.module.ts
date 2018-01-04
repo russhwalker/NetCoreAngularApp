@@ -7,17 +7,21 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
-import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
-import { CounterComponent } from './components/counter/counter.component';
 import { CustomersComponent } from './components/customers/customers.component';
 import { CustomerComponent } from './components/customer/customer.component';
+
+var routes = [
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: 'home', component: HomeComponent },
+    { path: 'customers', component: CustomersComponent },
+    { path: 'customer/:id', component: CustomerComponent },
+    { path: '**', redirectTo: 'home' }
+];
 
 @NgModule({
     declarations: [
         AppComponent,
         NavMenuComponent,
-        CounterComponent,
-        FetchDataComponent,
         HomeComponent,
         CustomersComponent,
         CustomerComponent
@@ -26,15 +30,9 @@ import { CustomerComponent } from './components/customer/customer.component';
         CommonModule,
         HttpModule,
         FormsModule,
-        RouterModule.forRoot([
-            { path: '', redirectTo: 'home', pathMatch: 'full' },
-            { path: 'home', component: HomeComponent },
-            { path: 'counter', component: CounterComponent },
-            { path: 'fetch-data', component: FetchDataComponent },
-            { path: 'customers', component: CustomersComponent },
-            { path: 'customer/:id', component: CustomerComponent },
-            { path: '**', redirectTo: 'home' }
-        ])
+        RouterModule.forRoot(routes)
+    ],
+    exports: [
     ]
 })
 export class AppModuleShared {
