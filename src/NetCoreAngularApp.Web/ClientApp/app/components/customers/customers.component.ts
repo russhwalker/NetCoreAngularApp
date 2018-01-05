@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { Http } from '@angular/http';
+import { Customer } from '../../customer';
 
 @Component({
     selector: 'customers',
@@ -14,10 +15,4 @@ export class CustomersComponent {
             this.customers = result.json() as Customer[];
         }, error => console.error(error));
     }
-}
-
-interface Customer {
-    customerId: number;
-    firstName: string;
-    lastName: string;
 }
