@@ -20,6 +20,7 @@ export class CustomerComponent {
 
 interface Customer {
     customerId: number;
+    customerTypeId: number;
     firstName: string;
     lastName: string;
 }
