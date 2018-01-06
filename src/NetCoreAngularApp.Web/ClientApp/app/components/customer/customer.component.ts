@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { Http } from '@angular/http';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Customer } from '../../customer';
 
 @Component({
     selector: 'customer',
@@ -16,11 +17,4 @@ export class CustomerComponent {
             this.customer = result.json() as Customer;
         }, error => console.error(error));
     }
-}
-
-interface Customer {
-    customerId: number;
-    customerTypeId: number;
-    firstName: string;
-    lastName: string;
 }
