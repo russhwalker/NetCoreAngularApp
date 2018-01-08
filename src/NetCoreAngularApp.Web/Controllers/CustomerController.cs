@@ -40,8 +40,9 @@ namespace NetCoreAngularApp.Web.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Models.Customer customer)
         {
+
         }
 
         [HttpPut("{id}")]

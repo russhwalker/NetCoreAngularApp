@@ -20,20 +20,20 @@ export class CustomerComponent {
         this.baseUrl = baseUrl;
         var id = this.route.snapshot.paramMap.get('id');
 
-        this.http.get(baseUrl + 'api/customer/' + id).subscribe(result => {
-            this.customer = result.json() as Customer;
-        }, error => console.error(error));
-
         this.http.get(baseUrl + 'api/customerstatus/').subscribe(result => {
             this.customerStatuses = result.json() as CustomerStatus[];
+        }, error => console.error(error));
+
+        this.http.get(baseUrl + 'api/customer/' + id).subscribe(result => {
+            this.customer = result.json() as Customer;
         }, error => console.error(error));
 
     }
 
     saveCustomer() {
 
-        this.http.post(this.baseUrl + 'api/customer/', null).subscribe(result => {
-            //todod result?
+        this.http.post(this.baseUrl + 'api/customer/', this.customer).subscribe(result => {
+            //todo result?
         }, error => console.error(error));
 
     }
