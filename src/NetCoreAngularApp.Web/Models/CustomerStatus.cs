@@ -5,11 +5,9 @@ using System.Threading.Tasks;
 
 namespace NetCoreAngularApp.Web.Models
 {
-    public class Customer
+    public class CustomerStatus
     {
-        public int CustomerId { get; set; }
         public int CustomerStatusId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string StatusText { get; set; }
     }
 }

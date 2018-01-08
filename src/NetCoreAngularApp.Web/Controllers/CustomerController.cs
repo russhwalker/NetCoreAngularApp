@@ -20,6 +20,7 @@ namespace NetCoreAngularApp.Web.Controllers
                 yield return new Models.Customer
                 {
                     CustomerId = i,
+                    CustomerStatusId = 1,
                     FirstName = $"John{i}",
                     LastName = "Doe"
                 };

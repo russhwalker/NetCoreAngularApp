@@ -23,9 +23,11 @@
 
   <ItemGroup>
     <None Remove="ClientApp\app\customer.ts" />
+    <None Remove="ClientApp\app\customerStatus.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\customerStatus.ts" />
     <TypeScriptCompile Include="ClientApp\app\customer.ts" />
   </ItemGroup>
 

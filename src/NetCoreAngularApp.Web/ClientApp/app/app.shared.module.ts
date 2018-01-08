@@ -30,7 +30,7 @@ var routes = [
         CommonModule,
         HttpModule,
         FormsModule,
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes, { enableTracing: true })
     ],
     exports: [
     ]

@@ -1,14 +1,27 @@
 <h1>Customers</h1>
-
-<div>
-    <label>First Name:</label>
-    <input [(ngModel)]="customer.customerTypeId" placeholder="First Name" class="form-control" />
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label>Customer Status:</label>
+            <select [(ngModel)]="customer.customerStatusId" class="form-control">
+                <option *ngFor="let item of customerStatuses" value="item.customerStatusId">
+                    {{item.statusText}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>First Name:</label>
+            <input [(ngModel)]="customer.firstName" placeholder="First Name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <div class="form-group">
+                <label>Last Name:</label>
+                <input [(ngModel)]="customer.lastName" placeholder="Last Name" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+    </div>
 </div>
-<div>
-    <label>First Name:</label>
-    <input [(ngModel)]="customer.firstName" placeholder="First Name" class="form-control" />
-</div>
-<div>
-    <label>Last Name:</label>
-    <input [(ngModel)]="customer.lastName" placeholder="Last Name" class="form-control" />
-</div>
+<br />
+<input type="submit" class="btn btn-primary" value="Save" (click)="saveCustomer()" />
