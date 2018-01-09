@@ -1,10 +1,10 @@
-<h1>Customers</h1>
-<div class="row">
+<h1>Customer</h1>
+<div *ngIf="customer" class="row">
     <div class="col-md-6">
         <div class="form-group">
             <label>Customer Status:</label>
             <select [(ngModel)]="customer.customerStatusId" class="form-control">
-                <option *ngFor="let item of customerStatuses" value="item.customerStatusId">
+                <option *ngFor="let item of customerStatuses" [ngValue]="item.customerStatusId">
                     {{item.statusText}}
                 </option>
             </select>

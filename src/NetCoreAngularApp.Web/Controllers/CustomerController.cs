@@ -34,6 +34,7 @@ namespace NetCoreAngularApp.Web.Controllers
             return new Models.Customer
             {
                 CustomerId = id,
+                CustomerStatusId = 1,
                 FirstName = $"John{id}",
                 LastName = "Doe"
             };
@@ -42,18 +43,14 @@ namespace NetCoreAngularApp.Web.Controllers
         [HttpPost]
         public void Post([FromBody]Models.Customer customer)
         {
-
+            //todo save code...
         }
 
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
 
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //}
 
     }
 }
