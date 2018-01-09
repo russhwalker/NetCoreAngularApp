@@ -23,7 +23,6 @@ export class CustomerComponent implements OnInit {
     }
 
     ngOnInit() {
-
         this.http.get(this.baseUrl + 'api/customerstatus/').subscribe(result => {
             this.customerStatuses = result.json() as CustomerStatus[];
         }, error => console.error(error));

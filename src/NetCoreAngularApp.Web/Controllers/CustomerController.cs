@@ -12,36 +12,27 @@ namespace NetCoreAngularApp.Web.Controllers
     public class CustomerController : Controller
     {
 
-        [HttpGet]
-        public IEnumerable<Models.Customer> Get()
+        private readonly Core.Data.CustomerRepository customerRepository;
+
+        public CustomerController(Core.Data.CustomerRepository customerRepository)
         {
-            for (int i = 1; i < 6; i++)
-            {
-                yield return new Models.Customer
-                {
-                    CustomerId = i,
-                    CustomerStatusId = 1,
-                    FirstName = $"John{i}",
-                    LastName = "Doe"
-                };
-            }
+            this.customerRepository = customerRepository;
         }
 
+        [HttpGet]
+        public IEnumerable<Core.Data.Customer> Get()
+        {
+            return this.customerRepository.GetCustomers();
+        }
 
         [HttpGet("{id}", Name = "Get")]
-        public Models.Customer Get(int id)
+        public Core.Data.Customer Get(int id)
         {
-            return new Models.Customer
-            {
-                CustomerId = id,
-                CustomerStatusId = 1,
-                FirstName = $"John{id}",
-                LastName = "Doe"
-            };
+            return this.customerRepository.GetCustomer(id);
         }
 
         [HttpPost]
-        public void Post([FromBody]Models.Customer customer)
+        public void Post([FromBody]Core.Data.Customer customer)
         {
             //todo save code...
         }

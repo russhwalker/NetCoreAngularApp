@@ -12,28 +12,18 @@ namespace NetCoreAngularApp.Web.Controllers
     public class CustomerStatusController : Controller
     {
 
-        [HttpGet]
-        public IEnumerable<Models.CustomerStatus> Get()
+        private readonly Core.Data.CustomerRepository customerRepository;
+
+        public CustomerStatusController(Core.Data.CustomerRepository customerRepository)
         {
-            for (int i = 1; i < 6; i++)
-            {
-                yield return new Models.CustomerStatus
-                {
-                    CustomerStatusId = i,
-                    StatusText = $"Status{i}",
-                };
-            }
+            this.customerRepository = customerRepository;
         }
 
-        //[HttpGet("{id}", Name = "Get")]
-        //public Models.CustomerStatus Get(int id)
-        //{
-        //    return new Models.CustomerStatus
-        //    {
-        //        CustomerStatusId = id,
-        //        StatusText = $"Status{id}",
-        //    };
-        //}
+        [HttpGet]
+        public IEnumerable<Core.Data.CustomerStatus> Get()
+        {
+            return this.customerRepository.GetCustomerStatuses();
+        }
 
     }
 }

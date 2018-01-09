@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NetCoreAngularApp.Web.Models
+namespace NetCoreAngularApp.Core.Data
 {
     public class Customer
     {
