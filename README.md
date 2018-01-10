@@ -1,2 +1,2 @@
 # NetCoreAngularApp
-A .NET Core / Angular leanring app.
+A .NET Core / Angular learning app.
