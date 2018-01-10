@@ -2,7 +2,7 @@
 <div *ngIf="customer" class="row">
     <div class="col-md-6">
         <div class="form-group">
-            <label>Customer Status:</label>
+            <label>Status:</label>
             <select [(ngModel)]="customer.customerStatusId" class="form-control">
                 <option *ngFor="let item of customerStatuses" [ngValue]="item.customerStatusId">
                     {{item.statusText}}
@@ -24,4 +24,4 @@
     </div>
 </div>
 <br />
-<input type="submit" class="btn btn-primary" value="Save" (click)="saveCustomer()" />
+<input *ngIf="customer" type="submit" class="btn btn-primary" value="Save" (click)="saveCustomer()" />

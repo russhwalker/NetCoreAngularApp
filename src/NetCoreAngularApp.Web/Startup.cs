@@ -93,9 +93,23 @@ namespace NetCoreAngularApp.Web
                 new Core.Data.Customer
                 {
                     CustomerId = 3,
-                    CustomerStatusId = 2,
+                    CustomerStatusId = 1,
                     FirstName = "Bob",
                     LastName = "Thomas"
+                },
+                new Core.Data.Customer
+                {
+                    CustomerId = 4,
+                    CustomerStatusId = 1,
+                    FirstName = "William",
+                    LastName = "Wallace"
+                },
+                new Core.Data.Customer
+                {
+                    CustomerId = 5,
+                    CustomerStatusId = 2,
+                    FirstName = "Andrew",
+                    LastName = "Something"
                 },
 
             });

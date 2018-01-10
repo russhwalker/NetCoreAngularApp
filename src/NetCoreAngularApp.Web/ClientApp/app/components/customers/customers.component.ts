@@ -9,11 +9,9 @@ import { Customer } from '../../customer';
 
 export class CustomersComponent implements OnInit {
     public customers: Customer[];
-    public http: Http;
     public baseUrl: string;
 
-    constructor(http: Http, @Inject('BASE_URL') baseUrl: string) {
-        this.http = http;
+    constructor(private http: Http, @Inject('BASE_URL') baseUrl: string) {
         this.baseUrl = baseUrl;
     }
 

@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { Http } from '@angular/http';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Customer } from '../../customer';
@@ -10,16 +11,14 @@ import { CustomerStatus } from '../../customerStatus';
 })
 
 export class CustomerComponent implements OnInit {
-    public id: number;
-    public customer: Customer;
-    public customerStatuses: CustomerStatus[];
-    public http: Http;
-    public baseUrl: string;
+    private id: number;
+    private customer: Customer;
+    private customerStatuses: CustomerStatus[];
+    private baseUrl: string;
 
-    constructor(http: Http, @Inject('BASE_URL') baseUrl: string, private route: ActivatedRoute) {
-        this.http = http;
+    constructor(private http: Http, @Inject('BASE_URL') baseUrl: string, route: ActivatedRoute, private location: Location) {
         this.baseUrl = baseUrl;
-        this.id = parseInt(this.route.snapshot.paramMap.get('id') || '0');
+        this.id = parseInt(route.snapshot.paramMap.get('id') || '0');
     }
 
     ngOnInit() {
@@ -32,11 +31,13 @@ export class CustomerComponent implements OnInit {
         }, error => console.error(error));
     }
 
-    saveCustomer() {
+    saveCustomer(): void {
 
         this.http.post(this.baseUrl + 'api/customer/', this.customer).subscribe(result => {
-            //todo result?
-
+            if (result.text() === 'true') {
+                //back to customer list
+                this.location.back();
+            }
         }, error => console.error(error));
 
     }

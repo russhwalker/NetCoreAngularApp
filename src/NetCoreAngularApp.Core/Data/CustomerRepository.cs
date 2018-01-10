@@ -30,5 +30,19 @@ namespace NetCoreAngularApp.Core.Data
             return this.storeContext.Customers.Single(c => c.CustomerId == id);
         }
 
+        public bool SaveCustomer(Customer customer)
+        {
+            if (customer.CustomerId == 0)
+            {
+                this.storeContext.Customers.Add(customer);
+            }
+            else
+            {
+                this.storeContext.Customers.Attach(customer);
+                this.storeContext.Entry(customer).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            }
+            return this.storeContext.SaveChanges() > 0;
+        }
+
     }
 }

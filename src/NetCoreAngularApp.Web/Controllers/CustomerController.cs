@@ -32,11 +32,10 @@ namespace NetCoreAngularApp.Web.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody]Core.Data.Customer customer)
+        public bool Post([FromBody]Core.Data.Customer customer)
         {
-            //todo save code...
+            return this.customerRepository.SaveCustomer(customer);
         }
-
 
         //[HttpDelete("{id}")]
         //public void Delete(int id)
