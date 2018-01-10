@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace NetCoreAngularApp.Web.Controllers
@@ -12,9 +9,9 @@ namespace NetCoreAngularApp.Web.Controllers
     public class CustomerStatusController : Controller
     {
 
-        private readonly Core.Data.CustomerRepository customerRepository;
+        private readonly Core.ICustomerRepository customerRepository;
 
-        public CustomerStatusController(Core.Data.CustomerRepository customerRepository)
+        public CustomerStatusController(Core.ICustomerRepository customerRepository)
         {
             this.customerRepository = customerRepository;
         }

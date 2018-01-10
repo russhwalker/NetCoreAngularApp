@@ -9,12 +9,14 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { CustomersComponent } from './components/customers/customers.component';
 import { CustomerComponent } from './components/customer/customer.component';
+import { OrderComponent } from './components/order/order.component';
 
 var routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'customers', component: CustomersComponent },
     { path: 'customer/:id', component: CustomerComponent },
+    { path: 'order/:id', component: OrderComponent },
     { path: '**', redirectTo: 'home' }
 ];
 
@@ -24,7 +26,8 @@ var routes = [
         NavMenuComponent,
         HomeComponent,
         CustomersComponent,
-        CustomerComponent
+        CustomerComponent,
+        OrderComponent
     ],
     imports: [
         CommonModule,

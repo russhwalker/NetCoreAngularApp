@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
@@ -24,7 +21,8 @@ namespace NetCoreAngularApp.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<Core.Data.StoreContext>(opt => opt.UseInMemoryDatabase("Store"));
-            services.AddTransient<Core.Data.CustomerRepository, Core.Data.CustomerRepository>();
+            services.AddTransient<Core.ICustomerRepository, Core.Data.CustomerRepository>();
+            services.AddTransient<Core.IOrderRepository, Core.Data.OrderRepository>();
             services.AddMvc();
         }
 
@@ -110,8 +108,28 @@ namespace NetCoreAngularApp.Web
                     CustomerStatusId = 2,
                     FirstName = "Andrew",
                     LastName = "Something"
-                },
+                }
+            });
 
+            storeContext.Orders.AddRange(new[] {
+                new Core.Data.Order
+                {
+                    OrderId = 1,
+                    CustomerId = 1,
+                    Total = 100M
+                },
+                new Core.Data.Order
+                {
+                    OrderId = 2,
+                    CustomerId = 1,
+                    Total = 200M
+                },
+                new Core.Data.Order
+                {
+                    OrderId = 3,
+                    CustomerId = 1,
+                    Total = 300M
+                }
             });
 
             storeContext.SaveChanges();

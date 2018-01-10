@@ -22,6 +22,28 @@
     </div>
     <div class="col-md-6">
     </div>
+    <input *ngIf="customer" type="submit" class="btn btn-primary" value="Save" (click)="saveCustomer()" />
 </div>
-<br />
-<input *ngIf="customer" type="submit" class="btn btn-primary" value="Save" (click)="saveCustomer()" />
+
+<hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Orders</h2>
+        <p *ngIf="!orders"><em>Loading...</em></p>
+        <table class='table' *ngIf="orders">
+            <thead>
+                <tr>
+                    <th>OrderId</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of orders">
+                    <td><a [routerLink]="['/order', order.orderId]">{{ order.orderId }}</a></td>
+                    <td><a [routerLink]="['/order', order.orderId]">{{ order.total }}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

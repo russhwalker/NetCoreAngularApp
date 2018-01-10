@@ -20,5 +20,4 @@ export class CustomersComponent implements OnInit {
             this.customers = result.json() as Customer[];
         }, error => console.error(error));
     }
-
 }

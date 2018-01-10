@@ -4,6 +4,7 @@ import { Http } from '@angular/http';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Customer } from '../../customer';
 import { CustomerStatus } from '../../customerStatus';
+import { Order } from '../../order';
 
 @Component({
     selector: 'customer',
@@ -14,6 +15,7 @@ export class CustomerComponent implements OnInit {
     private id: number;
     private customer: Customer;
     private customerStatuses: CustomerStatus[];
+    public orders: Order[];
     private baseUrl: string;
 
     constructor(private http: Http, @Inject('BASE_URL') baseUrl: string, route: ActivatedRoute, private location: Location) {
@@ -28,6 +30,10 @@ export class CustomerComponent implements OnInit {
 
         this.http.get(this.baseUrl + 'api/customer/' + this.id).subscribe(result => {
             this.customer = result.json() as Customer;
+        }, error => console.error(error));
+
+        this.http.get(this.baseUrl + 'api/orders/' + this.id).subscribe(result => {
+            this.orders = result.json() as Order[];
         }, error => console.error(error));
     }
 

@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace NetCoreAngularApp.Core.Data
 {
-    public class CustomerRepository
+    public class CustomerRepository : ICustomerRepository
     {
 
         private readonly StoreContext storeContext;

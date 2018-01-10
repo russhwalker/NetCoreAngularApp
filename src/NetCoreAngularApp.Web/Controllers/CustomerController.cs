@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace NetCoreAngularApp.Web.Controllers
@@ -12,9 +9,9 @@ namespace NetCoreAngularApp.Web.Controllers
     public class CustomerController : Controller
     {
 
-        private readonly Core.Data.CustomerRepository customerRepository;
+        private readonly Core.ICustomerRepository customerRepository;
 
-        public CustomerController(Core.Data.CustomerRepository customerRepository)
+        public CustomerController(Core.ICustomerRepository customerRepository)
         {
             this.customerRepository = customerRepository;
         }
@@ -25,7 +22,7 @@ namespace NetCoreAngularApp.Web.Controllers
             return this.customerRepository.GetCustomers();
         }
 
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}", Name = "GetCustomer")]
         public Core.Data.Customer Get(int id)
         {
             return this.customerRepository.GetCustomer(id);
@@ -36,11 +33,6 @@ namespace NetCoreAngularApp.Web.Controllers
         {
             return this.customerRepository.SaveCustomer(customer);
         }
-
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
 
     }
 }
