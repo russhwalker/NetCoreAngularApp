@@ -48,4 +48,8 @@ export class CustomerComponent implements OnInit {
 
     }
 
+    goBack(): void {
+        this.location.back();
+    }
+
 }

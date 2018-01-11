@@ -16,6 +16,7 @@ namespace NetCoreAngularApp.Core.Data
 
         public DbSet<CustomerStatus> CustomerStatuses { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Product> Products { get; set; }
 
     }
 }

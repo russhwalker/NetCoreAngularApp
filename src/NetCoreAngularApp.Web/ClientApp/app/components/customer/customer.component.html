@@ -22,7 +22,13 @@
     </div>
     <div class="col-md-6">
     </div>
-    <input *ngIf="customer" type="submit" class="btn btn-primary" value="Save" (click)="saveCustomer()" />
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <button class="btn btn-info" (click)="goBack()">Cancel / Back</button>
+        <input *ngIf="customer" type="submit" class="btn btn-primary" value="Save" (click)="saveCustomer()" />
+    </div>
 </div>
 
 <hr />

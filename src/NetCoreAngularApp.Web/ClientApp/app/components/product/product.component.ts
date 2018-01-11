@@ -2,18 +2,16 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Http } from '@angular/http';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Order } from '../../order';
 import { Product } from '../../product';
 
 @Component({
-    selector: 'order',
-    templateUrl: './order.component.html'
+    selector: 'product',
+    templateUrl: './product.component.html'
 })
 
-export class OrderComponent implements OnInit {
+export class ProductComponent implements OnInit {
     private id: number;
-    private order: Order;
-    public products: Product[];
+    private product: Product;
     private baseUrl: string;
 
     constructor(private http: Http, @Inject('BASE_URL') baseUrl: string, route: ActivatedRoute, private location: Location) {
@@ -22,11 +20,8 @@ export class OrderComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.http.get(this.baseUrl + 'api/order/' + this.id).subscribe(result => {
-            this.order = result.json() as Order;
-        }, error => console.error(error));
-        this.http.get(this.baseUrl + 'api/products/' + this.id).subscribe(result => {
-            this.products = result.json() as Product[];
+        this.http.get(this.baseUrl + 'api/product/' + this.id).subscribe(result => {
+            this.product = result.json() as Product;
         }, error => console.error(error));
     }
 

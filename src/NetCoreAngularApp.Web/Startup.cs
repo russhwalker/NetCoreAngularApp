@@ -23,6 +23,7 @@ namespace NetCoreAngularApp.Web
             services.AddDbContext<Core.Data.StoreContext>(opt => opt.UseInMemoryDatabase("Store"));
             services.AddTransient<Core.ICustomerRepository, Core.Data.CustomerRepository>();
             services.AddTransient<Core.IOrderRepository, Core.Data.OrderRepository>();
+            services.AddTransient<Core.IProductRepository, Core.Data.ProductRepository>();
             services.AddMvc();
         }
 
@@ -129,6 +130,30 @@ namespace NetCoreAngularApp.Web
                     OrderId = 3,
                     CustomerId = 1,
                     Total = 300M
+                }
+            });
+
+            storeContext.Products.AddRange(new[] {
+                new Core.Data.Product
+                {
+                    ProductId = 1,
+                    OrderId = 1,
+                    ProductName = "Widget 1",
+                    Price = 1M
+                },
+                new Core.Data.Product
+                {
+                    ProductId = 2,
+                    OrderId = 2,
+                    ProductName = "Widget 1",
+                    Price = 1M
+                },
+                new Core.Data.Product
+                {
+                    ProductId = 3,
+                    OrderId = 3,
+                    ProductName = "Widget 1",
+                    Price = 1M
                 }
             });
 

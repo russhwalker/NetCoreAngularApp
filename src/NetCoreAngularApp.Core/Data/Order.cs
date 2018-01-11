@@ -12,5 +12,6 @@ namespace NetCoreAngularApp.Core.Data
         public decimal Total { get; set; }
 
         public virtual Customer Customer { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

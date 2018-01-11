@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { CustomersComponent } from './components/customers/customers.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { OrderComponent } from './components/order/order.component';
+import { ProductComponent } from './components/product/product.component';
 
 var routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -17,6 +18,7 @@ var routes = [
     { path: 'customers', component: CustomersComponent },
     { path: 'customer/:id', component: CustomerComponent },
     { path: 'order/:id', component: OrderComponent },
+    { path: 'product/:id', component: ProductComponent },
     { path: '**', redirectTo: 'home' }
 ];
 
@@ -27,7 +29,8 @@ var routes = [
         HomeComponent,
         CustomersComponent,
         CustomerComponent,
-        OrderComponent
+        OrderComponent,
+        ProductComponent
     ],
     imports: [
         CommonModule,

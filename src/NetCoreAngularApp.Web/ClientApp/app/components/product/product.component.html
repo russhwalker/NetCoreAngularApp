@@ -1,0 +1,30 @@
+<h1>Order</h1>
+<div *ngIf="product" class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label>Product Id:</label>
+            {{product.productId}}
+        </div>
+        <div class="form-group">
+            <div class="form-group">
+                <label>ProductName:</label>
+                <input [(ngModel)]="product.productName" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-group">
+                <label>Price:</label>
+                <input [(ngModel)]="product.price" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <button class="btn btn-info" (click)="goBack()">Cancel / Back</button>
+        <input *ngIf="product" type="submit" class="btn btn-primary" value="Save" (click)="saveProduct()" />
+    </div>
+</div>
