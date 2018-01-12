@@ -18,7 +18,17 @@ namespace NetCoreAngularApp.Web.Controllers
         [HttpGet("{id}", Name = "GetProduct")]
         public Core.Data.Product Get(int id)
         {
+            if (id == 0)
+            {
+                return new Core.Data.Product();
+            }
             return this.productRepository.GetProduct(id);
+        }
+
+        [HttpPost]
+        public bool Post([FromBody]Core.Data.Product product)
+        {
+            return this.productRepository.SaveProduct(product);
         }
 
     }

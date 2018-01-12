@@ -38,14 +38,14 @@ export class CustomerComponent implements OnInit {
     }
 
     saveCustomer(): void {
-
         this.http.post(this.baseUrl + 'api/customer/', this.customer).subscribe(result => {
             if (result.text() === 'true') {
                 //back to customer list
                 this.location.back();
+            } else {
+                alert('error');
             }
         }, error => console.error(error));
-
     }
 
     goBack(): void {

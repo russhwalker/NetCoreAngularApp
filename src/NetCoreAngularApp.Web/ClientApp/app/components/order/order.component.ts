@@ -30,6 +30,17 @@ export class OrderComponent implements OnInit {
         }, error => console.error(error));
     }
 
+    saveOrder(): void {
+        this.http.post(this.baseUrl + 'api/order/', this.order).subscribe(result => {
+            if (result.text() === 'true') {
+                //back to customer list
+                this.location.back();
+            } else {
+                alert('error');
+            }
+        }, error => console.error(error));
+    }
+
     goBack(): void {
         this.location.back();
     }

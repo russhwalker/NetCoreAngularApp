@@ -9,5 +9,6 @@ namespace NetCoreAngularApp.Core
     {
         Data.Product GetProduct(int id);
         List<Data.Product> GetProducts(int orderId);
+        bool SaveProduct(Data.Product product);
     }
 }

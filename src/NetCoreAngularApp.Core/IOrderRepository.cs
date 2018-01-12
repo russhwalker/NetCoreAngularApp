@@ -9,5 +9,6 @@ namespace NetCoreAngularApp.Core
     {
         Data.Order GetOrder(int id);
         List<Data.Order> GetOrders(int customerId);
+        bool SaveOrder(Data.Order order);
     }
 }

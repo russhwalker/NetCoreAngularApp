@@ -19,7 +19,17 @@ namespace NetCoreAngularApp.Web.Controllers
         [HttpGet("{id}", Name = "GetOrder")]
         public Core.Data.Order Get(int id)
         {
+            if (id == 0)
+            {
+                return new Core.Data.Order();
+            }
             return this.orderRepository.GetOrder(id);
+        }
+
+        [HttpPost]
+        public bool Post([FromBody]Core.Data.Order order)
+        {
+            return this.orderRepository.SaveOrder(order);
         }
 
     }

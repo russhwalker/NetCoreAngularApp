@@ -25,6 +25,16 @@ export class ProductComponent implements OnInit {
         }, error => console.error(error));
     }
 
+    saveProduct(): void {
+        this.http.post(this.baseUrl + 'api/product/', this.product).subscribe(result => {
+            if (result.text() === 'true') {
+                this.location.back();
+            } else {
+                alert('error');
+            }
+        }, error => console.error(error));
+    }
+
     goBack(): void {
         this.location.back();
     }

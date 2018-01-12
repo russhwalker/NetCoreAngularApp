@@ -25,7 +25,14 @@ namespace NetCoreAngularApp.Web.Controllers
         [HttpGet("{id}", Name = "GetCustomer")]
         public Core.Data.Customer Get(int id)
         {
-            return this.customerRepository.GetCustomer(id);
+            if(id == 0)
+            {
+                return new Core.Data.Customer
+                {
+                    CustomerStatusId = 1
+                };
+            }
+            return this.customerRepository.GetCustomer(id);      
         }
 
         [HttpPost]

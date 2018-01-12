@@ -73,84 +73,76 @@ namespace NetCoreAngularApp.Web
                     StatusText = "InActive"
                 }
             });
+            storeContext.SaveChanges();
 
             storeContext.Customers.AddRange(new[] {
                 new Core.Data.Customer
                 {
-                    CustomerId = 1,
                     CustomerStatusId = 1,
                     FirstName = "John",
                     LastName = "Doe"
                 },
                 new Core.Data.Customer
                 {
-                    CustomerId = 2,
                     CustomerStatusId = 1,
                     FirstName = "Jane",
                     LastName = "Doe"
                 },
                 new Core.Data.Customer
                 {
-                    CustomerId = 3,
                     CustomerStatusId = 1,
                     FirstName = "Bob",
                     LastName = "Thomas"
                 },
                 new Core.Data.Customer
                 {
-                    CustomerId = 4,
                     CustomerStatusId = 1,
                     FirstName = "William",
                     LastName = "Wallace"
                 },
                 new Core.Data.Customer
                 {
-                    CustomerId = 5,
                     CustomerStatusId = 2,
                     FirstName = "Andrew",
                     LastName = "Something"
                 }
             });
+            storeContext.SaveChanges();
 
             storeContext.Orders.AddRange(new[] {
                 new Core.Data.Order
                 {
-                    OrderId = 1,
                     CustomerId = 1,
                     Total = 100M
                 },
                 new Core.Data.Order
                 {
-                    OrderId = 2,
                     CustomerId = 1,
                     Total = 200M
                 },
                 new Core.Data.Order
                 {
-                    OrderId = 3,
                     CustomerId = 1,
                     Total = 300M
                 }
             });
+            storeContext.SaveChanges();
 
             storeContext.Products.AddRange(new[] {
                 new Core.Data.Product
                 {
-                    ProductId = 1,
                     OrderId = 1,
                     ProductName = "Widget 1",
                     Price = 1M
                 },
                 new Core.Data.Product
                 {
-                    ProductId = 2,
                     OrderId = 2,
                     ProductName = "Widget 1",
                     Price = 1M
                 },
                 new Core.Data.Product
                 {
-                    ProductId = 3,
                     OrderId = 3,
                     ProductName = "Widget 1",
                     Price = 1M
