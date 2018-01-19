@@ -2,18 +2,16 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Http } from '@angular/http';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Order } from '../../order';
-import { Product } from '../../product';
+import { Address } from '../../address';
 
 @Component({
-    selector: 'order',
-    templateUrl: './order.component.html'
+    selector: 'address',
+    templateUrl: './address.component.html'
 })
 
-export class OrderComponent implements OnInit {
+export class AddressComponent implements OnInit {
     private id: number;
-    private order: Order;
-    public products: Product[];
+    private address: Address;
     private baseUrl: string;
 
     constructor(private http: Http, @Inject('BASE_URL') baseUrl: string, route: ActivatedRoute, private location: Location) {
@@ -22,18 +20,14 @@ export class OrderComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.http.get(this.baseUrl + 'api/order/' + this.id).subscribe(result => {
-            this.order = result.json() as Order;
-        }, error => console.error(error));
-        this.http.get(this.baseUrl + 'api/products/' + this.id).subscribe(result => {
-            this.products = result.json() as Product[];
+        this.http.get(this.baseUrl + 'api/address/' + this.id).subscribe(result => {
+            this.address = result.json() as Address;
         }, error => console.error(error));
     }
 
-    saveOrder(): void {
-        this.http.post(this.baseUrl + 'api/order/', this.order).subscribe(result => {
+    saveAddress(): void {
+        this.http.post(this.baseUrl + 'api/address/', this.address).subscribe(result => {
             if (result.text() === 'true') {
-                //back to customer list
                 this.location.back();
             } else {
                 alert('error');

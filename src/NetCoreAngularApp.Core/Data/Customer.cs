@@ -16,6 +16,6 @@ namespace NetCoreAngularApp.Core.Data
         public string LastName { get; set; }
 
         public virtual CustomerStatus CustomerStatus { get; set; }
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Address> Addreses { get; set; }
     }
 }

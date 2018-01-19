@@ -1,18 +1,22 @@
-﻿
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace NetCoreAngularApp.Core.Data
 {
-    public class Order
+    public class Address
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int OrderId { get; set; }
+        public int AddressId { get; set; }
         public int CustomerId { get; set; }
-        public decimal Total { get; set; }
+        public string Street { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Zip { get; set; }
 
         public virtual Customer Customer { get; set; }
-        public virtual ICollection<Product> Products { get; set; }
     }
 }

@@ -22,8 +22,7 @@ namespace NetCoreAngularApp.Web
         {
             services.AddDbContext<Core.Data.StoreContext>(opt => opt.UseInMemoryDatabase("Store"));
             services.AddTransient<Core.ICustomerRepository, Core.Data.CustomerRepository>();
-            services.AddTransient<Core.IOrderRepository, Core.Data.OrderRepository>();
-            services.AddTransient<Core.IProductRepository, Core.Data.ProductRepository>();
+            services.AddTransient<Core.IAddressRepository, Core.Data.AddressRepository>();
             services.AddMvc();
         }
 
@@ -109,46 +108,24 @@ namespace NetCoreAngularApp.Web
             });
             storeContext.SaveChanges();
 
-            storeContext.Orders.AddRange(new[] {
-                new Core.Data.Order
+            storeContext.Addresses.AddRange(new[] {
+                new Core.Data.Address
                 {
                     CustomerId = 1,
-                    Total = 100M
+                    Street = "101 Mailing Street",
+                    City = "Columbia",
+                    State = "SC",
+                    Zip = "29201"
                 },
-                new Core.Data.Order
+                new Core.Data.Address
                 {
                     CustomerId = 1,
-                    Total = 200M
-                },
-                new Core.Data.Order
-                {
-                    CustomerId = 1,
-                    Total = 300M
+                    Street = "101 Physical Street",
+                    City = "Columbia",
+                    State = "SC",
+                    Zip = "29201"
                 }
             });
-            storeContext.SaveChanges();
-
-            storeContext.Products.AddRange(new[] {
-                new Core.Data.Product
-                {
-                    OrderId = 1,
-                    ProductName = "Widget 1",
-                    Price = 1M
-                },
-                new Core.Data.Product
-                {
-                    OrderId = 2,
-                    ProductName = "Widget 1",
-                    Price = 1M
-                },
-                new Core.Data.Product
-                {
-                    OrderId = 3,
-                    ProductName = "Widget 1",
-                    Price = 1M
-                }
-            });
-
             storeContext.SaveChanges();
         }
 
