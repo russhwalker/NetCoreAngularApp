@@ -103,7 +103,7 @@ namespace NetCoreAngularApp.Web
                 {
                     CustomerStatusId = 2,
                     FirstName = "Andrew",
-                    LastName = "Something"
+                    LastName = "Willis"
                 }
             });
             storeContext.SaveChanges();
@@ -112,7 +112,7 @@ namespace NetCoreAngularApp.Web
                 new Core.Data.Address
                 {
                     CustomerId = 1,
-                    Street = "101 Mailing Street",
+                    Street = "101 Main Street",
                     City = "Columbia",
                     State = "SC",
                     Zip = "29201"
