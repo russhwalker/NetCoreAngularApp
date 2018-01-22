@@ -1,73 +1,46 @@
 <h1>Address</h1>
 <button class="btn btn-info" (click)="goBack()">Cancel / Back</button>
 <hr />
-<div *ngIf="address" class="row">
-    <div class="col-md-6">
+<form name="address">
+    <div *ngIf="address" class="row">
+        <div class="col-md-6">
 
-        <div class="form-group">
             <div class="form-group">
-                <label>Street:</label>
-                <input [(ngModel)]="address.street" required class="form-control" />
-            </div>
-            <div *ngIf="address.street.errors.invalid" class="alert alert-danger">
-                <div *ngIf="address.street.errors.required">
-                    *Street is required.
+                <div class="form-group">
+                    <label>Street:</label>
+                    <input [(ngModel)]="address.street" required class="form-control" [ngModelOptions]="{standalone: true}" />
                 </div>
             </div>
-        </div>
 
-        <div class="form-group">
             <div class="form-group">
-                <label>City:</label>
-                <input [(ngModel)]="address.city" required class="form-control" />
-            </div>
-            <div *ngIf="address.city.errors.invalid" class="alert alert-danger">
-                <div *ngIf="address.city.errors.required">
-                    *City is required.
+                <div class="form-group">
+                    <label>City:</label>
+                    <input [(ngModel)]="address.city" required class="form-control" [ngModelOptions]="{standalone: true}"/>
                 </div>
             </div>
-        </div>
 
-        <div class="form-group">
             <div class="form-group">
-                <label>State:</label>
-                <input [(ngModel)]="address.state" minlength="2" required class="form-control" />
-            </div>
-            <div *ngIf="address.state.errors.invalid" class="alert alert-danger">
-                <div *ngIf="address.state.errors.required">
-                    *State is required.
-                </div>
-                <div *ngIf="address.state.errors.minlength">
-                    *State must be at least 2 characters long.
+                <div class="form-group">
+                    <label>State:</label>
+                    <input [(ngModel)]="address.state" minlength="2" required class="form-control" [ngModelOptions]="{standalone: true}"/>
                 </div>
             </div>
-        </div>
 
-        <div class="form-group">
             <div class="form-group">
-                <label>Zip:</label>
-                <input [(ngModel)]="address.zip" minlength="5" maxlength="5" required class="form-control" />
-            </div>
-            <div *ngIf="address.zip.errors.invalid" class="alert alert-danger">
-                <div *ngIf="address.zip.errors.required">
-                    *Zip is required.
-                </div>
-                <div *ngIf="address.state.errors.minlength">
-                    *Zip must be 5 characters long.
-                </div>
-                <div *ngIf="address.state.errors.maxlength">
-                    *Zip must be 5 characters long.
+                <div class="form-group">
+                    <label>Zip:</label>
+                    <input [(ngModel)]="address.zip" minlength="5" maxlength="5" required class="form-control" [ngModelOptions]="{standalone: true}"/>
                 </div>
             </div>
-        </div>
 
+        </div>
+        <div class="col-md-6">
+        </div>
     </div>
-    <div class="col-md-6">
-    </div>
-</div>
 
-<div class="row">
-    <div class="col-md-12">
-        <input *ngIf="address" type="submit" class="btn btn-primary" value="Save" (click)="saveAddress()" />
+    <div class="row">
+        <div class="col-md-12">
+            <input *ngIf="address" type="submit" class="btn btn-primary" value="Save" (click)="saveAddress()" />
+        </div>
     </div>
-</div>
+</form>

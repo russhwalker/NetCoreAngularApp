@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { Customer } from '../../customer';
+import { CustomerRowComponent } from '../customerRow/customerRow.component'
 
 @Component({
     selector: 'customers',

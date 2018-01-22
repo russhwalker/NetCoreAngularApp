@@ -11,17 +11,22 @@ import { Address } from '../../address';
 
 export class AddressComponent implements OnInit {
     private id: number;
+    private customerId: number;
     private address: Address;
     private baseUrl: string;
 
     constructor(private http: Http, @Inject('BASE_URL') baseUrl: string, route: ActivatedRoute, private location: Location) {
         this.baseUrl = baseUrl;
+        this.customerId = parseInt(route.snapshot.paramMap.get('customerid') || '0');
         this.id = parseInt(route.snapshot.paramMap.get('id') || '0');
     }
 
     ngOnInit() {
         this.http.get(this.baseUrl + 'api/address/' + this.id).subscribe(result => {
             this.address = result.json() as Address;
+            if (this.address.customerId === 0) {
+                this.address.customerId = this.customerId;
+            }
         }, error => console.error(error));
     }
 

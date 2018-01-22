@@ -9,14 +9,16 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { CustomersComponent } from './components/customers/customers.component';
 import { CustomerComponent } from './components/customer/customer.component';
+import { CustomerRowComponent } from './components/customerrow/customerrow.component'
 import { AddressComponent } from './components/address/address.component';
+import { AddressesComponent } from './components/addresses/addresses.component';
 
 var routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'customers', component: CustomersComponent },
     { path: 'customer/:id', component: CustomerComponent },
-    { path: 'address/:id', component: AddressComponent },
+    { path: 'address/:customerid/:id', component: AddressComponent },
     { path: '**', redirectTo: 'home' }
 ];
 
@@ -27,13 +29,15 @@ var routes = [
         HomeComponent,
         CustomersComponent,
         CustomerComponent,
+        CustomerRowComponent,
+        AddressesComponent,
         AddressComponent
     ],
     imports: [
         CommonModule,
         HttpModule,
         FormsModule,
-        RouterModule.forRoot(routes, { enableTracing: true })
+        RouterModule.forRoot(routes, { enableTracing: false })
     ],
     exports: [
     ]
