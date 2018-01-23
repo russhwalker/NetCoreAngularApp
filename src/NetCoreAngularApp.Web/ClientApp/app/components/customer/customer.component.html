@@ -2,49 +2,63 @@
 <button class="btn btn-info" (click)="goBack()">Cancel / Back</button>
 <hr />
 
-
-
+<form #customerForm="ngForm">
     <div *ngIf="customer" class="row">
         <div class="col-md-6">
+
             <div class="form-group">
                 <label>First Name:</label>
-                <input [(ngModel)]="customer.firstName" id="firstName" name="firstName" required minlength="2" placeholder="First Name" class="form-control" #firstName="ngModel" />
+                <input [(ngModel)]="customer.firstName" name="firstName" required minlength="2" placeholder="First Name" class="form-control" #firstName="ngModel" />
 
                 <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
                     <div *ngIf="firstName.errors.required">
-                        Name is required.
+                        Required.
+                    </div>
+                    <div *ngIf="firstName.errors.minlength">
+                        Must be at least 2 characters long.
                     </div>
                 </div>
-
             </div>
+
             <div class="form-group">
                 <div class="form-group">
                     <label>Last Name:</label>
-                    <input [(ngModel)]="customer.lastName" name="customer.lastName" required placeholder="Last Name" class="form-control" />
+                    <input [(ngModel)]="customer.lastName" name="lastName" required placeholder="Last Name" class="form-control" #lastName="ngModel" />
+
+                    <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger">
+                        <div *ngIf="lastName.errors.required">
+                            Required.
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <div class="form-group">
                 <label>Status:</label>
-                <select [(ngModel)]="customer.customerStatusId" name="customer.customerStatusId" required class="form-control" >
+                <select [(ngModel)]="customer.customerStatusId" name="customerStatusId" required class="form-control" #customerStatusId="ngModel">
                     <option *ngFor="let item of customerStatuses" [ngValue]="item.customerStatusId">
                         {{item.statusText}}
                     </option>
                 </select>
+                <div *ngIf="customerStatusId.invalid && (customerStatusId.dirty || customerStatusId.touched)" class="alert alert-danger">
+                    <div *ngIf="customerStatusId.errors.required">
+                        Required.
+                    </div>
+                </div>
             </div>
+
         </div>
         <div class="col-md-6">
-            
+
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-12">
-            <input *ngIf="customer" type="submit" class="btn btn-primary" value="Save" (click)="saveCustomer()" />
+            <input *ngIf="customer" type="submit" class="btn btn-primary" value="Save" [disabled]="!customerForm.form.valid" (click)="saveCustomer()" />
         </div>
     </div>
-
-
-
+</form>
 <hr />
 
 <addresses></addresses>

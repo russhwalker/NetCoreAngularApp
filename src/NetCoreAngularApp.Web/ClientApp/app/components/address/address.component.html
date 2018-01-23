@@ -1,37 +1,66 @@
 <h1>Address</h1>
 <button class="btn btn-info" (click)="goBack()">Cancel / Back</button>
 <hr />
-<form name="address">
+
+<form #addressForm="ngForm">
     <div *ngIf="address" class="row">
         <div class="col-md-6">
 
             <div class="form-group">
-                <div class="form-group">
-                    <label>Street:</label>
-                    <input [(ngModel)]="address.street" required class="form-control" [ngModelOptions]="{standalone: true}" />
+                <label>Street:</label>
+                <input [(ngModel)]="address.street" name="street" required class="form-control" #street="ngModel" />
+
+                <div *ngIf="street.invalid && (street.dirty || street.touched)" class="alert alert-danger">
+                    <div *ngIf="street.errors.required">
+                        Required.
+                    </div>
+                    <div *ngIf="street.errors.minlength">
+                        Must be at least 2 characters long.
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label>City:</label>
+                <input [(ngModel)]="address.city" name="city" required class="form-control" #city="ngModel" />
+
+                <div *ngIf="city.invalid && (city.dirty || city.touched)" class="alert alert-danger">
+                    <div *ngIf="city.errors.required">
+                        Required.
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label>State:</label>
+                <input [(ngModel)]="address.state" name="state" minlength="2" maxlength="2" required class="form-control" #state="ngModel" />
+
+                <div *ngIf="state.invalid && (state.dirty || state.touched)" class="alert alert-danger">
+                    <div *ngIf="state.errors.required">
+                        Required.
+                    </div>
+                    <div *ngIf="state.errors.minlength || state.errors.maxlength">
+                        Must be 2 characters long.
+                    </div>
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="form-group">
-                    <label>City:</label>
-                    <input [(ngModel)]="address.city" required class="form-control" [ngModelOptions]="{standalone: true}"/>
+                <label>Zip:</label>
+                <input [(ngModel)]="address.zip" name="zip" minlength="5" maxlength="5" required class="form-control" #zip="ngModel">
+
+                <div *ngIf="zip.invalid && (zip.dirty || zip.touched)" class="alert alert-danger">
+                    <div *ngIf="zip.errors.required">
+                        Required.
+                    </div>
+                    <div *ngIf="zip.errors.minlength || zip.errors.maxlength">
+                        Must be 5 characters long.
+                    </div>
                 </div>
             </div>
 
-            <div class="form-group">
-                <div class="form-group">
-                    <label>State:</label>
-                    <input [(ngModel)]="address.state" minlength="2" required class="form-control" [ngModelOptions]="{standalone: true}"/>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="form-group">
-                    <label>Zip:</label>
-                    <input [(ngModel)]="address.zip" minlength="5" maxlength="5" required class="form-control" [ngModelOptions]="{standalone: true}"/>
-                </div>
-            </div>
 
         </div>
         <div class="col-md-6">
@@ -40,7 +69,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <input *ngIf="address" type="submit" class="btn btn-primary" value="Save" (click)="saveAddress()" />
+            <input *ngIf="address" type="submit" class="btn btn-primary" value="Save" [disabled]="!addressForm.form.valid" (click)="saveAddress()" />
         </div>
     </div>
 </form>
