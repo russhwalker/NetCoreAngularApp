@@ -36,7 +36,7 @@ namespace NetCoreAngularApp.Web.Controllers
         }
 
         [HttpPost]
-        public bool Post([FromBody]Core.Data.Customer customer)
+        public Core.Data.Customer Post([FromBody]Core.Data.Customer customer)
         {
             return this.customerRepository.SaveCustomer(customer);
         }

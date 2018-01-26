@@ -79,31 +79,36 @@ namespace NetCoreAngularApp.Web
                 {
                     CustomerStatusId = 1,
                     FirstName = "John",
-                    LastName = "Doe"
+                    LastName = "Doe",
+                    CreateDate = DateTime.Today.AddDays(-10)
                 },
                 new Core.Data.Customer
                 {
                     CustomerStatusId = 1,
                     FirstName = "Jane",
-                    LastName = "Doe"
+                    LastName = "Doe",
+                    CreateDate = DateTime.Today.AddDays(-5)
                 },
                 new Core.Data.Customer
                 {
                     CustomerStatusId = 1,
                     FirstName = "Bob",
-                    LastName = "Thomas"
+                    LastName = "Thomas",
+                    CreateDate = DateTime.Today.AddDays(4)
                 },
                 new Core.Data.Customer
                 {
                     CustomerStatusId = 1,
                     FirstName = "William",
-                    LastName = "Wallace"
+                    LastName = "Wallace",
+                    CreateDate = DateTime.Today.AddDays(3)
                 },
                 new Core.Data.Customer
                 {
                     CustomerStatusId = 2,
                     FirstName = "Andrew",
-                    LastName = "Willis"
+                    LastName = "Willis",
+                    CreateDate = DateTime.Today
                 }
             });
             storeContext.SaveChanges();

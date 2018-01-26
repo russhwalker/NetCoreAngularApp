@@ -29,7 +29,6 @@ export class CustomerComponent implements OnInit {
         this.http.get(this.baseUrl + 'api/customerstatus/').subscribe(result => {
             this.customerStatuses = result.json() as CustomerStatus[];
         }, error => console.error(error));
-
         this.http.get(this.baseUrl + 'api/customer/' + this.id).subscribe(result => {
             this.customer = result.json() as Customer;
             if (this.id === 0) {
@@ -48,11 +47,12 @@ export class CustomerComponent implements OnInit {
 
     saveCustomer(): void {
         this.http.post(this.baseUrl + 'api/customer/', this.customer).subscribe(result => {
-            if (result.text() === 'true') {
-                this.isEditMode = false;
-                this.isNew = false;
-            } else {
-                alert('error');
+            this.isEditMode = false;
+            this.isNew = false;
+            var c = result.json() as Customer;
+            if (this.id === 0) {
+                this.id = c.customerId;
+                this.location.go('/customer/' + c.customerId)
             }
         }, error => console.error(error));
     }

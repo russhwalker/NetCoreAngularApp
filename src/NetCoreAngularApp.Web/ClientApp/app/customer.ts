@@ -3,4 +3,5 @@
     customerStatusId: number;
     firstName: string;
     lastName: string;
+    createDate: Date;
 }

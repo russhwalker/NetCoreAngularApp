@@ -14,7 +14,7 @@ namespace NetCoreAngularApp.Core
 
         Data.Customer GetCustomer(int id);
 
-        bool SaveCustomer(Data.Customer customer);
+        Data.Customer SaveCustomer(Data.Customer customer);
 
     }
 }
