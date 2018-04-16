@@ -23,6 +23,7 @@ namespace NetCoreAngularApp.Web
             services.AddDbContext<Core.Data.StoreContext>(opt => opt.UseInMemoryDatabase("Store"));
             services.AddTransient<Core.ICustomerRepository, Core.Data.CustomerRepository>();
             services.AddTransient<Core.IAddressRepository, Core.Data.AddressRepository>();
+            services.AddTransient<Core.IOrderRepository, Core.Data.OrderRepository>();
             services.AddMvc();
         }
 
@@ -87,21 +88,21 @@ namespace NetCoreAngularApp.Web
                     CustomerStatusId = 1,
                     FirstName = "Jane",
                     LastName = "Doe",
-                    CreateDate = DateTime.Today.AddDays(-5)
+                    CreateDate = DateTime.Today.AddDays(-7)
                 },
                 new Core.Data.Customer
                 {
                     CustomerStatusId = 1,
                     FirstName = "Bob",
                     LastName = "Thomas",
-                    CreateDate = DateTime.Today.AddDays(4)
+                    CreateDate = DateTime.Today.AddDays(-5)
                 },
                 new Core.Data.Customer
                 {
                     CustomerStatusId = 1,
                     FirstName = "William",
                     LastName = "Wallace",
-                    CreateDate = DateTime.Today.AddDays(3)
+                    CreateDate = DateTime.Today.AddDays(-3)
                 },
                 new Core.Data.Customer
                 {
@@ -131,7 +132,54 @@ namespace NetCoreAngularApp.Web
                     Zip = "29201"
                 }
             });
+
+            storeContext.Products.AddRange(new[] {
+                new Core.Data.Product
+                {
+                    Description = "Widget 1",
+                    Price = 4.99M
+                },
+                new Core.Data.Product
+                {
+                    Description = "Widget 2",
+                    Price = 19.99M
+                }
+            });
+
+            storeContext.Orders.AddRange(new[] {
+                new Core.Data.Order
+                {
+                    CustomerId = 1,
+                    OrderDate = DateTime.Today.AddDays(-10)
+                },
+                new Core.Data.Order
+                {
+                    CustomerId = 1,
+                    OrderDate = DateTime.Today.AddDays(-1)
+                }
+            });
             storeContext.SaveChanges();
+
+
+            storeContext.OrderItems.AddRange(new[] {
+                new Core.Data.OrderItem
+                {
+                    ProductId = 1,
+                    OrderId = 1
+                },
+                new Core.Data.OrderItem
+                {
+                    ProductId = 1,
+                    OrderId = 2
+                },
+                new Core.Data.OrderItem
+                {
+                    ProductId = 2,
+                    OrderId = 1
+                }
+            });
+
+
         }
 
     }

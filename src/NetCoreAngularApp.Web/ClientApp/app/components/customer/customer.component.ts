@@ -32,20 +32,20 @@ export class CustomerComponent implements OnInit {
         this.http.get(this.baseUrl + 'api/customer/' + this.id).subscribe(result => {
             this.customer = result.json() as Customer;
             if (this.id === 0) {
-                this.editCustomer();
+                this.edit();
             }
         }, error => console.error(error));
     }
 
-    editCustomer(): void {
+    edit(): void {
         this.isEditMode = true;
     }
 
-    cancelEditCustomer(): void {
+    cancelEdit(): void {
         this.isEditMode = false;
     }
 
-    saveCustomer(): void {
+    save(): void {
         this.http.post(this.baseUrl + 'api/customer/', this.customer).subscribe(result => {
             this.isEditMode = false;
             this.isNew = false;

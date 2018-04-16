@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace NetCoreAngularApp.Core.Data
 {
@@ -18,5 +16,6 @@ namespace NetCoreAngularApp.Core.Data
 
         public virtual CustomerStatus CustomerStatus { get; set; }
         public virtual ICollection<Address> Addreses { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

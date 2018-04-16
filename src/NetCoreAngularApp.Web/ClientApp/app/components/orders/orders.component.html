@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2>Orders</h2>
+        <p *ngIf="!orders"><em>Loading...</em></p>
+        <table class='table' *ngIf="orders">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of orders">
+                    <td><a class="btn btn-sm btn-info" [routerLink]="['/order', order.customerId, order.orderId]">View</a></td>
+                    <td>{{ order.orderDate }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr />
+        <a class="btn btn-info" [routerLink]="['/order', customerId, 0]">New Order</a>
+    </div>
+</div>

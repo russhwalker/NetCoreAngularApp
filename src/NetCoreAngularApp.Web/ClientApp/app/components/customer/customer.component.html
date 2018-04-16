@@ -48,7 +48,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div *ngIf="customer && customer.customerId !== 0" class="form-group">
                 <label>Created:</label>
                 <input [(ngModel)]="customer.createDate" name="createDate" disabled readonly class="form-control" />
             </div>
@@ -61,11 +61,11 @@
 
     <div class="row">
         <div *ngIf="customer && !isEditMode" class="col-md-12">
-            <button class="btn btn-info" (click)="editCustomer()">Edit</button>
+            <button class="btn btn-info" (click)="edit()">Edit</button>
         </div>
         <div *ngIf="customer && isEditMode" class="col-md-12">
-            <button *ngIf="!isNew" class="btn btn-info" (click)="cancelEditCustomer()">Cancel Edit</button>
-            <input type="submit" class="btn btn-primary" value="Save" [disabled]="!customerForm.form.valid" (click)="saveCustomer()" />
+            <button *ngIf="!isNew" class="btn btn-info" (click)="cancelEdit()">Cancel Edit</button>
+            <input type="submit" class="btn btn-primary" value="Save" [disabled]="!customerForm.form.valid" (click)="save()" />
         </div>
     </div>
 
@@ -73,3 +73,5 @@
 <hr />
 
 <addresses *ngIf="!isNew"></addresses>
+<hr />
+<orders *ngIf="!isNew"></orders>

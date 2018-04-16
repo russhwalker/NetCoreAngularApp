@@ -38,6 +38,7 @@ namespace NetCoreAngularApp.Web.Controllers
         [HttpPost]
         public Core.Data.Customer Post([FromBody]Core.Data.Customer customer)
         {
+            customer.CreateDate = DateTime.Now;
             return this.customerRepository.SaveCustomer(customer);
         }
 
