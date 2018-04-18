@@ -12,7 +12,9 @@ import { CustomerComponent } from './components/customer/customer.component';
 import { CustomerRowComponent } from './components/customerrow/customerrow.component'
 import { AddressComponent } from './components/address/address.component';
 import { AddressesComponent } from './components/addresses/addresses.component';
+import { CustomerOrdersComponent } from './components/customerorders/customerorders.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { OrderComponent } from './components/order/order.component';
 
 var routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -20,6 +22,8 @@ var routes = [
     { path: 'customers', component: CustomersComponent },
     { path: 'customer/:id', component: CustomerComponent },
     { path: 'address/:customerid/:id', component: AddressComponent },
+    { path: 'customerorders/:id', component: CustomerOrdersComponent },
+    { path: 'order/:id', component: OrderComponent },
     { path: 'orders', component: OrdersComponent },
     { path: '**', redirectTo: 'home' }
 ];
@@ -34,7 +38,9 @@ var routes = [
         CustomersComponent,
         HomeComponent,
         NavMenuComponent,
-        OrdersComponent
+        CustomerOrdersComponent,
+        OrdersComponent,
+        OrderComponent
     ],
     imports: [
         CommonModule,

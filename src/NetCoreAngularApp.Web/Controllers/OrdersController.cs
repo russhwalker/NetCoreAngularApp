@@ -21,5 +21,11 @@ namespace NetCoreAngularApp.Web.Controllers
             return this.orderRepository.GetOrders(id);
         }
 
+        [HttpGet(Name = "GetAllOrders")]
+        public IEnumerable<Core.Data.Order> Get()
+        {
+            return this.orderRepository.GetOrders();
+        }
+
     }
 }

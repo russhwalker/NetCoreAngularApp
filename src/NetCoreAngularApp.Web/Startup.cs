@@ -156,6 +156,11 @@ namespace NetCoreAngularApp.Web
                 {
                     CustomerId = 1,
                     OrderDate = DateTime.Today.AddDays(-1)
+                },
+                new Core.Data.Order
+                {
+                    CustomerId = 2,
+                    OrderDate = DateTime.Today.AddDays(-1)
                 }
             });
             storeContext.SaveChanges();
@@ -176,6 +181,11 @@ namespace NetCoreAngularApp.Web
                 {
                     ProductId = 2,
                     OrderId = 1
+                },
+                new Core.Data.OrderItem
+                {
+                    ProductId = 1,
+                    OrderId = 2
                 }
             });
 

@@ -18,6 +18,11 @@ namespace NetCoreAngularApp.Core.Data
             return this.storeContext.Orders.Single(o => o.OrderId == id);
         }
 
+        public List<Order> GetOrders()
+        {
+            return this.storeContext.Orders.ToList();
+        }
+
         public List<Order> GetOrders(int customerId)
         {
             return this.storeContext.Orders.Where(a => a.CustomerId == customerId).ToList();

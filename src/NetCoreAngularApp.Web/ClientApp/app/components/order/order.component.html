@@ -1,0 +1,16 @@
+<h1>Order</h1>
+<form #orderDetailForm="ngForm">
+    <div *ngIf="orderDetail" class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                {{orderDetail}}
+                {{orderDetail.order.orderDate}}
+                <input [(ngModel)]="order.orderDate" name="orderDate" class="form-control" #orderDate="ngModel" />
+            </div>
+            <button (click)="test">Test</button>
+        </div>
+        <div class="col-md-6">
+
+        </div>
+    </div>
+</form>
