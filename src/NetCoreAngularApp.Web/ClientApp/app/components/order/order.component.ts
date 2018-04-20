@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Http } from '@angular/http';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Order } from '../../order';
 import { OrderDetail } from '../../orderDetail';
 
 @Component({
@@ -12,7 +11,6 @@ import { OrderDetail } from '../../orderDetail';
 
 export class OrderComponent implements OnInit {
     private id: number;
-    public order: Order;
     public orderDetail: OrderDetail;
     private baseUrl: string;
 
@@ -24,13 +22,7 @@ export class OrderComponent implements OnInit {
     ngOnInit() {
         this.http.get(this.baseUrl + 'api/orderdetail/' + this.id).subscribe(result => {
             this.orderDetail = result.json() as OrderDetail;
-            this.order = this.orderDetail.order;
         }, error => console.error(error));
-    }
-
-    test(): void {
-        alert('got here');
-        var asdf = this.orderDetail;
     }
 
 }

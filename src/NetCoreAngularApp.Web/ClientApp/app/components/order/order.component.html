@@ -3,11 +3,8 @@
     <div *ngIf="orderDetail" class="row">
         <div class="col-md-6">
             <div class="form-group">
-                {{orderDetail}}
-                {{orderDetail.order.orderDate}}
-                <input [(ngModel)]="order.orderDate" name="orderDate" class="form-control" #orderDate="ngModel" />
+                <input [(ngModel)]="orderDetail.order.orderDate" name="orderDetail.order.orderDate" class="form-control" #orderDate="ngModel" />
             </div>
-            <button (click)="test">Test</button>
         </div>
         <div class="col-md-6">
 

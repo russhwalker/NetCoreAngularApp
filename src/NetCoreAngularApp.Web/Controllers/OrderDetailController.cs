@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace NetCoreAngularApp.Web.Controllers
 {
@@ -19,23 +18,17 @@ namespace NetCoreAngularApp.Web.Controllers
         }
 
         [HttpGet("{id}", Name = "GetOrderDetail")]
-        public OrderDetail Get(int id)
+        public Core.Models.OrderDetail Get(int id)
         {
             var order = this.orderRepository.GetOrder(id);
             var customer = this.customerRepository.GetCustomer(order.CustomerId);
-            return new OrderDetail
+            return new Core.Models.OrderDetail
             {
                 Order = order,
                 Customer = customer
             };
         }
 
-    }
-
-    public class OrderDetail
-    {
-        public Core.Data.Order Order { get; set; }
-        public Core.Data.Customer Customer { get; set; }
     }
 
 }

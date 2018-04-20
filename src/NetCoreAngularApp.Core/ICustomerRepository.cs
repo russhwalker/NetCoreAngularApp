@@ -8,13 +8,13 @@ namespace NetCoreAngularApp.Core
     public interface ICustomerRepository
     {
 
-        List<Data.CustomerStatus> GetCustomerStatuses();
+        List<Models.CustomerStatus> GetCustomerStatuses();
 
-        List<Data.Customer> GetCustomers();
+        List<Models.Customer> GetCustomers();
 
-        Data.Customer GetCustomer(int id);
+        Models.Customer GetCustomer(int id);
 
-        Data.Customer SaveCustomer(Data.Customer customer);
+        Models.Customer SaveCustomer(Models.Customer customer);
 
     }
 }

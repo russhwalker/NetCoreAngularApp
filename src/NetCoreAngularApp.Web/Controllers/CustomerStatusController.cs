@@ -17,7 +17,7 @@ namespace NetCoreAngularApp.Web.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Core.Data.CustomerStatus> Get()
+        public IEnumerable<Core.Models.CustomerStatus> Get()
         {
             return this.customerRepository.GetCustomerStatuses();
         }

@@ -17,17 +17,17 @@ namespace NetCoreAngularApp.Web.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Core.Data.Customer> Get()
+        public IEnumerable<Core.Models.Customer> Get()
         {
             return this.customerRepository.GetCustomers();
         }
 
         [HttpGet("{id}", Name = "GetCustomer")]
-        public Core.Data.Customer Get(int id)
+        public Core.Models.Customer Get(int id)
         {
             if(id == 0)
             {
-                return new Core.Data.Customer
+                return new Core.Models.Customer
                 {
                     CustomerStatusId = 1
                 };
@@ -36,7 +36,7 @@ namespace NetCoreAngularApp.Web.Controllers
         }
 
         [HttpPost]
-        public Core.Data.Customer Post([FromBody]Core.Data.Customer customer)
+        public Core.Models.Customer Post([FromBody]Core.Models.Customer customer)
         {
             customer.CreateDate = DateTime.Now;
             return this.customerRepository.SaveCustomer(customer);

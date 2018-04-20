@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 
 namespace NetCoreAngularApp.Core.Data
 {
@@ -13,31 +14,32 @@ namespace NetCoreAngularApp.Core.Data
             this.storeContext = storeContext;
         }
 
-        public Order GetOrder(int id)
+        public Models.Order GetOrder(int id)
         {
-            return this.storeContext.Orders.Single(o => o.OrderId == id);
+            return Mapper.Map<Models.Order>(this.storeContext.Orders.Single(o => o.OrderId == id));
         }
 
-        public List<Order> GetOrders()
+        public List<Models.Order> GetOrders()
         {
-            return this.storeContext.Orders.ToList();
+            return Mapper.Map<List<Models.Order>>(this.storeContext.Orders.ToList());
         }
 
-        public List<Order> GetOrders(int customerId)
+        public List<Models.Order> GetOrders(int customerId)
         {
-            return this.storeContext.Orders.Where(a => a.CustomerId == customerId).ToList();
+            return Mapper.Map<List<Models.Order>>(this.storeContext.Orders.Where(a => a.CustomerId == customerId).ToList());
         }
 
-        public bool SaveOrder(Order order)
+        public bool SaveOrder(Models.Order order)
         {
-            if (order.OrderId == 0)
+            var entity = Mapper.Map<Order>(order);
+            if (entity.OrderId == 0)
             {
-                this.storeContext.Orders.Add(order);
+                this.storeContext.Orders.Add(entity);
             }
             else
             {
-                this.storeContext.Orders.Attach(order);
-                this.storeContext.Entry(order).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                this.storeContext.Orders.Attach(entity);
+                this.storeContext.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             }
             return this.storeContext.SaveChanges() > 0;
         }

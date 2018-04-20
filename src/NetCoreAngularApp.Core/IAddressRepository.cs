@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace NetCoreAngularApp.Core
 {
     public interface IAddressRepository
     {
-        Data.Address GetAddress(int id);
-        List<Data.Address> GetAddresses(int customerId);
-        bool SaveAddress(Data.Address address);
+        Models.Address GetAddress(int id);
+        List<Models.Address> GetAddresses(int customerId);
+        bool SaveAddress(Models.Address address);
     }
 }

@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 
 namespace NetCoreAngularApp.Core.Data
 {
@@ -14,31 +14,32 @@ namespace NetCoreAngularApp.Core.Data
             this.storeContext = storeContext;
         }
 
-        public List<CustomerStatus> GetCustomerStatuses()
+        public List<Models.CustomerStatus> GetCustomerStatuses()
         {
-            return this.storeContext.CustomerStatuses.ToList();
+            return Mapper.Map<List<Models.CustomerStatus>>(this.storeContext.CustomerStatuses.ToList());
         }
 
-        public List<Customer> GetCustomers()
+        public List<Models.Customer> GetCustomers()
         {
-            return this.storeContext.Customers.ToList();
+            return Mapper.Map<List<Models.Customer>>(this.storeContext.Customers.ToList());
         }
 
-        public Customer GetCustomer(int id)
+        public Models.Customer GetCustomer(int id)
         {
-            return this.storeContext.Customers.Single(c => c.CustomerId == id);
+            return Mapper.Map<Models.Customer>(this.storeContext.Customers.Single(c => c.CustomerId == id));
         }
 
-        public Customer SaveCustomer(Customer customer)
+        public Models.Customer SaveCustomer(Models.Customer customer)
         {
+            var entity = Mapper.Map<Customer>(customer);
             if (customer.CustomerId == 0)
             {
-                this.storeContext.Customers.Add(customer);
+                this.storeContext.Customers.Add(entity);
             }
             else
             {
-                this.storeContext.Customers.Attach(customer);
-                this.storeContext.Entry(customer).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                this.storeContext.Customers.Attach(entity);
+                this.storeContext.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             }
             this.storeContext.SaveChanges();
             return customer;

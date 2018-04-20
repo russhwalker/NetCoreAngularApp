@@ -16,13 +16,13 @@ namespace NetCoreAngularApp.Web.Controllers
         }
 
         [HttpGet("{id}", Name = "GetOrders")]
-        public IEnumerable<Core.Data.Order> Get(int id)
+        public IEnumerable<Core.Models.Order> Get(int id)
         {
             return this.orderRepository.GetOrders(id);
         }
 
         [HttpGet(Name = "GetAllOrders")]
-        public IEnumerable<Core.Data.Order> Get()
+        public IEnumerable<Core.Models.Order> Get()
         {
             return this.orderRepository.GetOrders();
         }

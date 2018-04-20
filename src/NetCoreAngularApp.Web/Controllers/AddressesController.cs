@@ -17,7 +17,7 @@ namespace NetCoreAngularApp.Web.Controllers
         }
 
         [HttpGet("{id}", Name = "GetAddresses")]
-        public IEnumerable<Core.Data.Address> Get(int id)
+        public IEnumerable<Core.Models.Address> Get(int id)
         {
             return this.addressRepository.GetAddresses(id);
         }

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
 
 namespace NetCoreAngularApp.Web
 {
@@ -44,6 +45,7 @@ namespace NetCoreAngularApp.Web
             }
 
             SeedDatabase(app.ApplicationServices.GetService<Core.Data.StoreContext>());
+            SetupAutoMapper();
 
             app.UseStaticFiles();
 
@@ -190,6 +192,21 @@ namespace NetCoreAngularApp.Web
             });
 
 
+        }
+
+        private void SetupAutoMapper()
+        {
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<Core.Data.Address, Core.Models.Address>();
+                cfg.CreateMap<Core.Models.Address, Core.Data.Address>();
+                cfg.CreateMap<Core.Data.Customer, Core.Models.Customer>();
+                cfg.CreateMap<Core.Models.Customer, Core.Data.Customer>();
+                cfg.CreateMap<Core.Data.CustomerStatus, Core.Models.CustomerStatus>();
+                cfg.CreateMap<Core.Models.CustomerStatus, Core.Data.CustomerStatus>();
+                cfg.CreateMap<Core.Data.Order, Core.Models.Order>();
+                cfg.CreateMap<Core.Models.Order, Core.Data.Order>();
+            });
         }
 
     }

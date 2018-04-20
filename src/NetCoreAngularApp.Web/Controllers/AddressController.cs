@@ -17,17 +17,17 @@ namespace NetCoreAngularApp.Web.Controllers
         }
 
         [HttpGet("{id}", Name = "GetAddress")]
-        public Core.Data.Address Get(int id)
+        public Core.Models.Address Get(int id)
         {
             if (id == 0)
             {
-                return new Core.Data.Address();
+                return new Core.Models.Address();
             }
             return this.addressRepository.GetAddress(id);
         }
 
         [HttpPost]
-        public bool Post([FromBody]Core.Data.Address address)
+        public bool Post([FromBody]Core.Models.Address address)
         {
             return this.addressRepository.SaveAddress(address);
         }

@@ -13,27 +13,28 @@ namespace NetCoreAngularApp.Core.Data
         {
             this.storeContext = storeContext;
         }
-        
-        public List<Address> GetAddresses(int customerId)
+
+        public List<Models.Address> GetAddresses(int customerId)
         {
-            return this.storeContext.Addresses.Where(a => a.CustomerId == customerId).ToList();
+            return AutoMapper.Mapper.Map<List<Models.Address>>(this.storeContext.Addresses.Where(a => a.CustomerId == customerId).ToList());
         }
 
-        public Address GetAddress(int id)
+        public Models.Address GetAddress(int id)
         {
-            return this.storeContext.Addresses.Single(c => c.AddressId == id);
+            return AutoMapper.Mapper.Map<Models.Address>(this.storeContext.Addresses.Single(c => c.AddressId == id));
         }
 
-        public bool SaveAddress(Address address)
+        public bool SaveAddress(Models.Address address)
         {
+            var entity = AutoMapper.Mapper.Map<Address>(address);
             if (address.AddressId == 0)
             {
-                this.storeContext.Addresses.Add(address);
+                this.storeContext.Addresses.Add(entity);
             }
             else
             {
-                this.storeContext.Addresses.Attach(address);
-                this.storeContext.Entry(address).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                this.storeContext.Addresses.Attach(entity);
+                this.storeContext.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             }
             return this.storeContext.SaveChanges() > 0;
         }
