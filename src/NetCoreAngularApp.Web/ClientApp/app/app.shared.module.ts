@@ -15,6 +15,7 @@ import { AddressesComponent } from './components/addresses/addresses.component';
 import { CustomerOrdersComponent } from './components/customerorders/customerorders.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { OrderComponent } from './components/order/order.component';
+import { OrderItemsComponent } from './components/orderItems/orderItems.component';
 
 var routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -40,7 +41,8 @@ var routes = [
         NavMenuComponent,
         CustomerOrdersComponent,
         OrdersComponent,
-        OrderComponent
+        OrderComponent,
+        OrderItemsComponent
     ],
     imports: [
         CommonModule,

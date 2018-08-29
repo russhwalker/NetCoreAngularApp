@@ -29,6 +29,11 @@ namespace NetCoreAngularApp.Core.Data
             return Mapper.Map<List<Models.Order>>(this.storeContext.Orders.Where(a => a.CustomerId == customerId).ToList());
         }
 
+        public List<Models.OrderItem> GetOrderItems(int orderId)
+        {
+            return Mapper.Map<List<Models.OrderItem>>(this.storeContext.OrderItems.Where(a => a.OrderId == orderId).ToList());
+        }
+
         public bool SaveOrder(Models.Order order)
         {
             var entity = Mapper.Map<Order>(order);

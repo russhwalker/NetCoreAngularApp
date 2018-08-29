@@ -12,8 +12,8 @@ import { CustomerStatus } from '../../customerStatus';
 
 export class CustomerComponent implements OnInit {
     private id: number;
-    private customer: Customer;
-    private customerStatuses: CustomerStatus[];
+    private customer: Customer | undefined;
+    private customerStatuses: CustomerStatus[] | undefined;
     private baseUrl: string;
     private isEditMode: boolean;
     private isNew: boolean;

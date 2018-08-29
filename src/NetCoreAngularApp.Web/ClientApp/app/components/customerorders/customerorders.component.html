@@ -11,7 +11,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let order of orders">
-                    <td><a class="btn btn-sm btn-info" [routerLink]="['/order', order.customerId, order.orderId]">View</a></td>
+                    <td><a class="btn btn-sm btn-info" [routerLink]="['/order', order.orderId]">View</a></td>
                     <td>{{ order.orderDate }}</td>
                 </tr>
             </tbody>

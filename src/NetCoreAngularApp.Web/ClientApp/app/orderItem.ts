@@ -2,4 +2,5 @@
     orderItemId: number;
     orderId: number;
     productId: number;
+    price: number;
 }

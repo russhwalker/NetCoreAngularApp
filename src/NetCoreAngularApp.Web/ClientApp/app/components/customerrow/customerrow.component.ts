@@ -7,5 +7,5 @@ import { Customer } from '../../customer';
 })
 
 export class CustomerRowComponent {
-    @Input() customer: Customer;
+    @Input() customer: Customer | undefined;
 }

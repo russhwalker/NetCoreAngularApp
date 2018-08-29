@@ -9,7 +9,7 @@ namespace NetCoreAngularApp.Core.Data
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ProductId { get; set; }
         public string Description { get; set; }
-        public decimal Price { get; set; }
+        public decimal CurrentPrice { get; set; }
 
         public virtual ICollection<OrderItem> OrderItems { get; set; }
     }

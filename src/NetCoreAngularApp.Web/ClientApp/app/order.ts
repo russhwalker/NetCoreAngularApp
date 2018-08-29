@@ -2,4 +2,5 @@
     orderId: number;
     customerId: number;
     orderDate: Date;
+    total: number;
 }

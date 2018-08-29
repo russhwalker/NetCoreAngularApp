@@ -139,12 +139,17 @@ namespace NetCoreAngularApp.Web
                 new Core.Data.Product
                 {
                     Description = "Widget 1",
-                    Price = 4.99M
+                    CurrentPrice = 4.99M
                 },
                 new Core.Data.Product
                 {
                     Description = "Widget 2",
-                    Price = 19.99M
+                    CurrentPrice = 19.99M
+                },
+                new Core.Data.Product
+                {
+                    Description = "Widget 3",
+                    CurrentPrice = 99.99M
                 }
             });
 
@@ -152,45 +157,51 @@ namespace NetCoreAngularApp.Web
                 new Core.Data.Order
                 {
                     CustomerId = 1,
-                    OrderDate = DateTime.Today.AddDays(-10)
+                    OrderDate = DateTime.Today.AddDays(-10),
+                    Total = 27.55M
                 },
                 new Core.Data.Order
                 {
                     CustomerId = 1,
-                    OrderDate = DateTime.Today.AddDays(-1)
+                    OrderDate = DateTime.Today.AddDays(-1),
+                    Total = 12.95M
                 },
                 new Core.Data.Order
                 {
                     CustomerId = 2,
-                    OrderDate = DateTime.Today.AddDays(-1)
+                    OrderDate = DateTime.Today.AddDays(-1),
+                    Total = 112.27M
                 }
             });
             storeContext.SaveChanges();
-
 
             storeContext.OrderItems.AddRange(new[] {
                 new Core.Data.OrderItem
                 {
                     ProductId = 1,
-                    OrderId = 1
+                    OrderId = 1,
+                    Price = 4.99M
                 },
                 new Core.Data.OrderItem
                 {
                     ProductId = 1,
-                    OrderId = 2
+                    OrderId = 2,
+                    Price = 19.99M
                 },
                 new Core.Data.OrderItem
                 {
                     ProductId = 2,
-                    OrderId = 1
+                    OrderId = 1,
+                    Price = 3.49M
                 },
                 new Core.Data.OrderItem
                 {
                     ProductId = 1,
-                    OrderId = 2
+                    OrderId = 2,
+                    Price = 112.49M
                 }
             });
-
+            storeContext.SaveChanges();
 
         }
 
@@ -206,6 +217,8 @@ namespace NetCoreAngularApp.Web
                 cfg.CreateMap<Core.Models.CustomerStatus, Core.Data.CustomerStatus>();
                 cfg.CreateMap<Core.Data.Order, Core.Models.Order>();
                 cfg.CreateMap<Core.Models.Order, Core.Data.Order>();
+                cfg.CreateMap<Core.Data.OrderItem, Core.Models.OrderItem>();
+                cfg.CreateMap<Core.Models.OrderItem, Core.Data.OrderItem>();
             });
         }
 
