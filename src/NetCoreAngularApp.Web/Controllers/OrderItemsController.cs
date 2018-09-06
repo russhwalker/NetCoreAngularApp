@@ -16,7 +16,7 @@ namespace NetCoreAngularApp.Web.Controllers
         }
 
         [HttpGet("{id}", Name = "GetOrderItems")]
-        public IEnumerable<Core.Models.OrderItem> Get(int id)
+        public IEnumerable<Core.Models.OrderItemView> Get(int id)
         {
             return this.orderRepository.GetOrderItems(id);
         }

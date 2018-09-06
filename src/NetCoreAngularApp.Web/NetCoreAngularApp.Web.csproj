@@ -30,6 +30,7 @@
     <None Remove="ClientApp\app\order.ts" />
     <None Remove="ClientApp\app\orderDetail.ts" />
     <None Remove="ClientApp\app\orderItem.ts" />
+    <None Remove="ClientApp\app\orderItemView.ts" />
     <None Remove="ClientApp\app\product.ts" />
   </ItemGroup>
 
@@ -40,6 +41,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\address.ts" />
     <TypeScriptCompile Include="ClientApp\app\orderDetail.ts" />
+    <TypeScriptCompile Include="ClientApp\app\orderItemView.ts" />
     <TypeScriptCompile Include="ClientApp\app\orderItem.ts" />
     <TypeScriptCompile Include="ClientApp\app\product.ts" />
     <TypeScriptCompile Include="ClientApp\app\order.ts" />

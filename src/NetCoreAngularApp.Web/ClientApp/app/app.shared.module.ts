@@ -15,7 +15,8 @@ import { AddressesComponent } from './components/addresses/addresses.component';
 import { CustomerOrdersComponent } from './components/customerorders/customerorders.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { OrderComponent } from './components/order/order.component';
-import { OrderItemsComponent } from './components/orderItems/orderItems.component';
+import { OrderItemsComponent } from './components/orderitems/orderitems.component';
+import { OrderItemEditComponent } from './components/orderitemedit/orderitemedit.component'
 
 var routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -42,7 +43,8 @@ var routes = [
         CustomerOrdersComponent,
         OrdersComponent,
         OrderComponent,
-        OrderItemsComponent
+        OrderItemsComponent,
+        OrderItemEditComponent
     ],
     imports: [
         CommonModule,

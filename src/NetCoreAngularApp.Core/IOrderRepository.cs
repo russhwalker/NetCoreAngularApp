@@ -8,6 +8,8 @@ namespace NetCoreAngularApp.Core
         List<Models.Order> GetOrders();
         List<Models.Order> GetOrders(int customerId);
         bool SaveOrder(Models.Order order);
-        List<Models.OrderItem> GetOrderItems(int orderId);
+        List<Models.OrderItemView> GetOrderItems(int orderId);
+        bool SaveOrderItem(Models.OrderItem orderItem);
+        List<Models.Product> GetProducts();
     }
 }

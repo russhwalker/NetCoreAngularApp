@@ -219,6 +219,8 @@ namespace NetCoreAngularApp.Web
                 cfg.CreateMap<Core.Models.Order, Core.Data.Order>();
                 cfg.CreateMap<Core.Data.OrderItem, Core.Models.OrderItem>();
                 cfg.CreateMap<Core.Models.OrderItem, Core.Data.OrderItem>();
+                cfg.CreateMap<Core.Data.Product, Core.Models.Product>();
+                cfg.CreateMap<Core.Models.Product, Core.Data.Product>();
             });
         }
 

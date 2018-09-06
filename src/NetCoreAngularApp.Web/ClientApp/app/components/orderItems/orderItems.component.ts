@@ -2,15 +2,16 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Http } from '@angular/http';
 import { ActivatedRoute, Params } from '@angular/router';
-import { OrderItem } from '../../orderItem';
+import { OrderItemView } from '../../orderItemView';
 
 @Component({
     selector: 'order-items',
-    templateUrl: './orderItems.component.html'
+    templateUrl: './orderitems.component.html'
 })
 
 export class OrderItemsComponent implements OnInit {
-    public orderItems: OrderItem[] | undefined;
+    public orderItems: OrderItemView[] | undefined;
+    //public orderItem: OrderItem | undefined;
     private baseUrl: string;
     private id: number;
 
@@ -21,7 +22,7 @@ export class OrderItemsComponent implements OnInit {
 
     ngOnInit() {
         this.http.get(this.baseUrl + 'api/orderitems/' + this.id).subscribe(result => {
-            this.orderItems = result.json() as OrderItem[];
+            this.orderItems = result.json() as OrderItemView[];
         }, error => console.error(error));
     }
 
